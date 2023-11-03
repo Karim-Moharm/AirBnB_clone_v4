@@ -6,9 +6,11 @@ from models import storage
 from flask import jsonify, abort, request
 from models.all_models import our_models
 from models.amenity import Amenity
+from flasgger.utils import swag_from
 
 
 @app_views.route('/amenities', methods=['GET'])
+@swag_from('documentation/amenity/all_amenities.yml')
 def get_amenities():
     """return json format for amenities object
     """
@@ -19,6 +21,7 @@ def get_amenities():
 
 
 @app_views.route("/amenities/<amenity_id>", methods=['GET'])
+@swag_from('documentation/amenity/get_amenity.yml', methods=['GET'])
 def get_amenities_id(amenity_id):
     """get json format for specific id
     """
@@ -29,6 +32,7 @@ def get_amenities_id(amenity_id):
 
 
 @app_views.route("/amenities/<amenity_id>", methods=['DELETE'])
+@swag_from('documentation/amenity/delete_amenity.yml', methods=['DELETE'])
 def delete_amenities_id(amenity_id):
     """delete state object based on id
     """
@@ -42,6 +46,7 @@ def delete_amenities_id(amenity_id):
 
 
 @app_views.route("/amenities/", methods=['POST'])
+@swag_from('documentation/amenity/post_amenity.yml', methods=['POST'])
 def post_amenities():
     """create new state object
     """
@@ -60,6 +65,7 @@ def post_amenities():
 
 
 @app_views.route("/amenities/<amenity_id>", methods=['PUT'])
+@swag_from('documentation/amenity/put_amenity.yml', methods=['PUT'])
 def update_amenities(amenity_id):
     """create new name for state object
     """
