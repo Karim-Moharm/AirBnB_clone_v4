@@ -7,10 +7,12 @@ from flask import jsonify, abort, request
 from models.all_models import our_models
 from models.place import Place
 from models.city import City
+from flasgger.utils import swag_from
 
 
 @app_views.route('/cities/<city_id>/places/', methods=['GET'])
 @app_views.route('/cities/<city_id>/places', methods=['GET'])
+@swag_from('documentation/place/get_places.yml', methods=['GET'])
 def get_places(city_id):
     """return json format for places object
     """
@@ -37,6 +39,7 @@ def get_places_id(place_id):
 
 @app_views.route("/places/<place_id>/", methods=['DELETE'])
 @app_views.route("/places/<place_id>", methods=['DELETE'])
+@swag_from('documentation/place/delete_place.yml', methods=['DELETE'])
 def delete_places_id(place_id):
     """delete city object based on id
     """
@@ -51,6 +54,7 @@ def delete_places_id(place_id):
 
 @app_views.route("/cities/<city_id>/places/", methods=['POST'])
 @app_views.route("/cities/<city_id>/places", methods=['POST'])
+@swag_from('documentation/place/post_place.yml', methods=['POST'])
 def post_places(city_id):
     """create new place object
     """
@@ -74,6 +78,7 @@ def post_places(city_id):
 
 @app_views.route("/places/<place_id>/", methods=['PUT'])
 @app_views.route("/places/<place_id>", methods=['PUT'])
+@swag_from('documentation/place/put_place.yml', methods=['PUT'])
 def update_places(place_id):
     """create new name for place object
     """

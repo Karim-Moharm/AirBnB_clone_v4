@@ -8,10 +8,12 @@ from models.all_models import our_models
 from models.place import Place
 from models.review import Review
 from models.user import User
+from flasgger.utils import swag_from
 
 
 @app_views.route('/places/<place_id>/reviews', methods=['GET'])
 @app_views.route('/places/<place_id>/reviews', methods=['GET'])
+@swag_from('documentation/reviews/get_reviews.yml', methods=['GET'])
 def get_reviews(place_id):
     """list of all Review objects of a Place
     """
@@ -30,6 +32,7 @@ def get_reviews(place_id):
 
 @app_views.route("/reviews/<review_id>/", methods=['GET'])
 @app_views.route("/reviews/<review_id>", methods=['GET'])
+@swag_from('documentation/reviews/get_review.yml', methods=['GET'])
 def get_review_id(review_id):
     """Review object
     """
@@ -41,6 +44,7 @@ def get_review_id(review_id):
 
 @app_views.route("/reviews/<review_id>/", methods=['DELETE'])
 @app_views.route("/reviews/<review_id>", methods=['DELETE'])
+@swag_from('documentation/reviews/delete_reviews.yml', methods=['DELETE'])
 def delete_review_id(review_id):
     """delete review object based on id
     """
@@ -55,6 +59,7 @@ def delete_review_id(review_id):
 
 @app_views.route("/places/<place_id>/reviews/", methods=['POST'])
 @app_views.route("/places/<place_id>/reviews", methods=['POST'])
+@swag_from('documentation/reviews/post_reviews.yml', methods=['POST'])
 def post_review(place_id):
     """create new review object
     """
@@ -83,6 +88,7 @@ def post_review(place_id):
 
 @app_views.route("/reviews/<review_id>/", methods=['PUT'])
 @app_views.route("/reviews/<review_id>", methods=['PUT'])
+@swag_from('documentation/reviews/put_reviews.yml', methods=['PUT'])
 def update_reviews(review_id):
     """create new name for place object
     """
