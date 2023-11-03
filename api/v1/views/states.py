@@ -10,6 +10,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/states', methods=['GET'])
+@swag_from('documentation/state/get_state.yml', methods=['GET'])
 def get_states():
     """return json format for states object
     """
@@ -20,6 +21,7 @@ def get_states():
 
 
 @app_views.route("/states/<state_id>", methods=['GET'])
+@swag_from('documentation/state/get_id_state.yml', methods=['get'])
 def get_states_id(state_id):
     """get json format for specific id
     """
@@ -30,6 +32,7 @@ def get_states_id(state_id):
 
 
 @app_views.route("/states/<state_id>", methods=['DELETE'])
+@swag_from('documentation/state/delete_state.yml', methods=['DELETE'])
 def delete_states_id(state_id):
     """delete state object based on id
     """
@@ -43,6 +46,7 @@ def delete_states_id(state_id):
 
 
 @app_views.route("/states/", methods=['POST'])
+@swag_from('documentation/state/post_state.yml', methods=['POST'])
 def post_states():
     """create new state object
     """
@@ -61,6 +65,7 @@ def post_states():
 
 
 @app_views.route("/states/<state_id>", methods=['PUT'])
+@swag_from('documentation/state/put_state.yml', methods=['PUT'])
 def update_states(state_id):
     """create new name for state object
     """

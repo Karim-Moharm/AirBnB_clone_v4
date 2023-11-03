@@ -8,6 +8,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/users', methods=['GET'])
+@swag_from('documentation/user/all_users.yml')
 def get_users():
     """return json format for users object
     """
@@ -18,6 +19,7 @@ def get_users():
 
 
 @app_views.route("/users/<user_id>", methods=['GET'])
+@swag_from('documentation/user/get_user.yml', methods=['GET'])
 def get_users_id(user_id):
     """get json format for specific id
     """
@@ -28,6 +30,7 @@ def get_users_id(user_id):
 
 
 @app_views.route("/users/<user_id>", methods=['DELETE'])
+@swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
 def delete_users_id(user_id):
     """delete user object based on id
     """
@@ -41,6 +44,7 @@ def delete_users_id(user_id):
 
 
 @app_views.route("/users", methods=['POST'])
+@swag_from('documentation/user/post_user.yml', methods=['POST'])
 def post_users():
     """create new user object
     """
@@ -59,6 +63,7 @@ def post_users():
 
 
 @app_views.route("/users/<user_id>", methods=['PUT'])
+@swag_from('documentation/user/put_user.yml', methods=['PUT'])
 def update_users(user_id):
     """create new name for user object
     """
