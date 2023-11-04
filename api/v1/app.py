@@ -16,8 +16,8 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 app.url_map.strict_slashes = False
 app.register_blueprint(app_views)
-CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
-
+# CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
+CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 @app.teardown_appcontext
 def close_session(exception):
