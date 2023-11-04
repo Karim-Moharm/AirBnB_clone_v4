@@ -30,18 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error('error while fetching the data');
             },
             success: function (data) {
-                console.log(data.status)
-                if (data.status === "OK"){
-                    $('#api_status').addClass('available')
+                console.log(data.status);
+                if (data.status === "OK") {
+                    $('#api_status').addClass('available');
                 }
-                else{
-                    $('#api_status').removeClass('available')
+                else {
+                    $('#api_status').removeClass('available');
                 }
             }
         });
 
         $.ajax({
             type: 'POST',
+            ContentType: 'application/JSON',
             url: "http://0.0.0.0:5001/api/v1/places_search/",
             data: {
                 format: 'json'
@@ -50,13 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error('error while fetching the data');
             },
             success: function (data) {
-                console.log(data.status)
-                if (data.status === "OK"){
-                    $('#api_status').addClass('available')
-                }
-                else{
-                    $('#api_status').removeClass('available')
-                }
+                console.log(data);
             }
         });
     });
