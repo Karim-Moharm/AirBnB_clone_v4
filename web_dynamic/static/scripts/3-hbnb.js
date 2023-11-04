@@ -41,17 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         $.ajax({
-            type: 'POST',
-            ContentType: 'application/JSON',
             url: "http://0.0.0.0:5001/api/v1/places_search/",
-            data: {
-                format: 'json'
-            },
+            type: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({}),
             error: () => {
                 console.error('error while fetching the data');
             },
             success: function (data) {
-                console.log(data);
+                for (place of data){
+                    console.log(place.name)
+                    console.log("=====")
+                }
             }
         });
     });
