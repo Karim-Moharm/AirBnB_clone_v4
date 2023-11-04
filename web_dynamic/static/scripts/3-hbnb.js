@@ -48,10 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
             error: () => {
                 console.error('error while fetching the data');
             },
+
             success: function (data) {
-                for (place of data){
-                    console.log(place.name)
-                    console.log("=====")
+                let html = undefined;
+                for (place of data) {
+                    // console.log(place.name)
+                    // console.log("=====")
+                    html = '<article>' + '<div class="title_box">' +
+                        "<h2>" + place.name + "</h2>" +
+                        '<div class="price_by_night">' +
+                        place.price_by_night +
+                        '</div>' +
+                        '</div>';
+                    $('.places').append(html
+                    );
+
                 }
             }
         });
