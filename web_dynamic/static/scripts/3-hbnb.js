@@ -60,9 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         place.price_by_night +
                         '</div>' +
                         '</div>';
-                    $('.places').append(html
-                    );
-
+                    $('.places').append(html);
+                    // console.log(html)
                 }
             }
         });
