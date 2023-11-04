@@ -1,13 +1,15 @@
 $(document).ready(function () {
-    let amenities = [];
-    let checkboxId = $('#checkbox-id');
+    // let amenities = [];
+    let checkboxId = $('input:checkbox');
 
-    if (checkboxId.checked) {
-        console.log('done');
-    }
-    // $('input').change(() => {
-    //     if (checkboxId.checked) {
-    //         console.log('done');
-    //     }
-    // });
+    let list = []
+    $('input').change(() => {
+        if (checkboxId.is(':checked')) {
+            console.log('done');
+        }
+        else {
+            console.log('not done')
+        }
+    });
+
 });
