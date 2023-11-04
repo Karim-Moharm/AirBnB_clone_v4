@@ -1,23 +1,4 @@
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     $(document).ready(function () {
-//         let amenities = [];
-//         let checkboxId = $('#checkbox-id');
-//         let temp = undefined;
-//         $('input').on('change', () => {
-//             if (checkboxId.is(':checked')) {
-//                 // console.log('done');
-//                 temp = checkboxId.attr('data-id');
-//                 console.log(temp);
-//                 amenities.push(temp);
-//             }
-//             else {
-//                 delete checkboxId.attr('data-id');
-//             }
-//         });
-//     });
-// });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     $(document).ready(function () {
@@ -35,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Update the h4 tag with the list of selected amenities
             const h4Tag = $('.amenities h4');
-            h4Tag.text(Object.values(selectedAmenities).join(', '));
+            // h4Tag.text(Object.values(selectedAmenities).join(', '));
+            h4Tag.text(selectedAmenities.join(', '));
         });
     });
 });
