@@ -2,21 +2,18 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     $(document).ready(function () {
-        const selectedAmenities = {}; // Use an object to store the selected amenities
+        const selectedAmenities = {};
 
         $('input[type="checkbox"]').on('change', function () {
             const amenityId = $(this).data('id');
             const amenityName = $(this).data('name');
 
             if (this.checked) {
-                selectedAmenities[amenityId] = amenityName; // Add to the selected amenities
+                selectedAmenities[amenityId] = amenityName;
             } else {
-                delete selectedAmenities[amenityId]; // Remove from the selected amenities
+                delete selectedAmenities[amenityId];
             }
-
-            // Update the h4 tag with the list of selected amenities
             const h4Tag = $('.amenities h4');
-            // h4Tag.text(Object.values(selectedAmenities).join(', '));
             h4Tag.text(selectedAmenities.join(', '));
         });
 
@@ -76,10 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     $('.places').append(html);
                     // Use a specific selector within the current article to append user information
                     const userContainer = $('.places article:last-child .user');
-                        
+
                     $.get("http://0.0.0.0:5001/api/v1/users/" + place.user_id, (data) => {
-                        userContainer.append('<b>Owner:</b>' + data.first_name + " " + data.last_name)
-                    })
+                        userContainer.append('<b>Owner:</b>' + data.first_name + " " + data.last_name);
+                    });
                 }
             }
         });

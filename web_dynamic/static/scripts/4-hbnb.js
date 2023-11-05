@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             h4Tag.text(Object.values(selectedAmenities).join(', '));
         });
 
-        console.log(selectedAmenities)
+        console.log(selectedAmenities);
 
         $.ajax({
             type: 'GET',
@@ -46,18 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 url: "http://0.0.0.0:5001/api/v1/places_search/",
                 type: 'POST',
                 contentType: "application/json",
-                data: JSON.stringify({}),
+                data: JSON.stringify({ 'amenities': Object.keys(selectedAmenities) }),
                 error: () => {
                     console.error('error while fetching the data');
                 },
-    
+
                 success: function (data) {
                     let html = undefined;
                     var first_name = undefined;
                     var last_name = undefined;
                     for (place of data) {
 
-                        console.log(data)
+                        console.log(data);
 
                         html = '<article>' + '<div class="title_box">' +
                             "<h2>" + place.name + "</h2>" +
@@ -78,19 +78,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             place.description +
                             '</div>' +
                             '</article >';
-    
+
                         $('.places').append(html);
 
                         // Use a specific selector within the current article to append user information
                         const userContainer = $('.places article:last-child .user');
-                        
+
                         $.get("http://0.0.0.0:5001/api/v1/users/" + place.user_id, (data) => {
-                            userContainer.append('<b>Owner:</b>' + data.first_name + " " + data.last_name)
-                        })
+                            userContainer.append('<b>Owner:</b>' + data.first_name + " " + data.last_name);
+                        });
                     }
                 }
             });
-        })
+        });
     });
 });
 
