@@ -55,9 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     let html = undefined;
                     var first_name = undefined;
                     var last_name = undefined;
+                    console.log(data)
                     for (place of data) {
-
-                        console.log(data);
 
                         html = '<article>' + '<div class="title_box">' +
                             "<h2>" + place.name + "</h2>" +
