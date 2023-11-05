@@ -74,7 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         '</article >';
 
                     $('.places').append(html);
-                    // console.log(html)
+                    // Use a specific selector within the current article to append user information
+                    const userContainer = $('.places article:last-child .user');
+                        
+                    $.get("http://0.0.0.0:5001/api/v1/users/" + place.user_id, (data) => {
+                        userContainer.append('<b>Owner:</b>' + data.first_name + " " + data.last_name)
+                    })
                 }
             }
         });

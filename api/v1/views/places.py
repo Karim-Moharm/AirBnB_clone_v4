@@ -7,6 +7,7 @@ from flask import jsonify, abort, request
 from models.all_models import our_models
 from models.place import Place
 from models.city import City
+from models.state import State
 from models.amenity import Amenity
 from flasgger.utils import swag_from
 
